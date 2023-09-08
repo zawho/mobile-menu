@@ -47,26 +47,17 @@ function createMenu() {
 }
 
 function styleMenu() {
-    const dropDownMenus = document.querySelectorAll('.dropdown-menu');
-    const dropDownOptions = document.querySelectorAll('.dropdown-option');
-    for (let i = 0; i < dropDownMenus.length; i++) {
-        dropDownMenus[i].style.textAlign = 'center';
-        dropDownMenus[i].style.display = 'flex';
-        dropDownMenus[i].style.flexDirection = 'column';
-        dropDownMenus[i].style.border = '1px solid black';
-        dropDownMenus[i].style.maxWidth = '200px';
-        dropDownMenus[i].style.gap = '5px';
-        dropDownMenus[i].style.padding = "5px 0px";
-    }
-    for (let i = 0; i < dropDownOptions.length; i++) {
-        dropDownOptions[i].style.display = 'none';
-        dropDownOptions[i].style.borderTop = '1px solid black';
-        dropDownOptions[i].style.paddingTop = '5px';
-        dropDownOptions[i].style.justifyContent = 'center';
-        dropDownOptions[i].style.alignItems = 'center';
+    const mobileMenus = document.querySelectorAll('.mobile-menu');
+    for (let i = 0; i < mobileMenus.length; i++) {
+        mobileMenus[i].style.display = 'flex';
+        mobileMenus[i].style.justifyContent = 'space-between';
+        mobileMenus[i].style.whiteSpace = 'nowrap';
+        mobileMenus[i].style.gap = '5px';
+        mobileMenus[i].style.padding = '5px';
     }
 }
 
 createMenu();
+styleMenu();
 
 export { setMenuEvent, createMenu, styleMenu };
