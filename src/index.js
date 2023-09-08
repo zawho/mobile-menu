@@ -1,7 +1,7 @@
 function displayMenu() {
     const thisMenuArr = Array.from(this.childNodes);
     for (let i = 0; i < thisMenuArr.length; i++) {
-        if (thisMenuArr[i].className === 'dropdown-option') {
+        if (thisMenuArr[i].className === 'more-option') {
             thisMenuArr[i].style.display = 'flex';
         }
     }
@@ -10,21 +10,35 @@ function displayMenu() {
 function hideMenu() {
     const thisMenuArr = Array.from(this.childNodes);
     for (let i = 0; i < thisMenuArr.length; i++) {
-        if (thisMenuArr[i].className === 'dropdown-option') {
+        if (thisMenuArr[i].className === 'more-option') {
             thisMenuArr[i].style.display = 'none';
         }
     }
 }
 
 function setMenuEvent() {
-    const body = document.querySelector('body');
-    const bodyArr = Array.from(body.childNodes);
-    for (let i = 0; i < bodyArr.length; i++) {
-        if (bodyArr[i].className === 'dropdown-menu') {
-            bodyArr[i].addEventListener('mouseover', displayMenu);
-            bodyArr[i].addEventListener('mouseout', hideMenu);
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileMenuArr = Array.from(mobileMenu.childNodes)
+    for (let i = 0; i < mobileMenuArr.length; i++) {
+        console.log(mobileMenuArr[i]);
+        if (mobileMenuArr[i].id === 'more-menu') {
+            mobileMenuArr[i].addEventListener('mouseover', displayMenu);
+            mobileMenuArr[i].addEventListener('mouseout', hideMenu);
         }
     }
+}
+
+function createMoreMenu() {
+    const moreMenu = document.querySelector('#more-menu');
+    const moreOptions = [];
+    for (let i = 1; i < 6; i++) {
+        moreOptions[i] = document.createElement('div');
+        moreOptions[i].className = 'more-option';
+        moreOptions[i].innerText = `more ${i}`;
+        moreOptions[i].style.display = 'none';
+        moreMenu.appendChild(moreOptions[i]);
+    }
+    setMenuEvent();
 }
 
 function createMenu() {
@@ -38,12 +52,13 @@ function createMenu() {
         mobileOptions[i].className = 'mobile-menu-option';
         if (i < 5) {
             mobileOptions[i].innerText = `option ${i}`;
-        } else if (i === 5) {
+        } else {
             mobileOptions[i].innerText = 'more';
+            mobileOptions[i].id = 'more-menu';
         }
         mobileMenu.appendChild(mobileOptions[i]);
     }
-    // setMenuEvent();
+    createMoreMenu();
 }
 
 function styleMenu() {
@@ -52,7 +67,6 @@ function styleMenu() {
         mobileMenus[i].style.display = 'flex';
         mobileMenus[i].style.justifyContent = 'space-between';
         mobileMenus[i].style.whiteSpace = 'nowrap';
-        mobileMenus[i].style.gap = '5px';
         mobileMenus[i].style.padding = '5px';
     }
 }
