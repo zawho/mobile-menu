@@ -64,8 +64,10 @@ function createMenu() {
 function styleMenu() {
     const mobileMenus = document.querySelectorAll('.mobile-menu');
     for (let i = 0; i < mobileMenus.length; i++) {
-        mobileMenus[i].style.display = 'flex';
-        mobileMenus[i].style.justifyContent = 'space-between';
+        mobileMenus[i].style.display = 'grid';
+        mobileMenus[i].style.grid = '1fr / repeat(5, 1fr)';
+        mobileMenus[i].style.justifyItems = 'center';
+        mobileMenus[i].style.textAlign = 'center';
         mobileMenus[i].style.whiteSpace = 'nowrap';
         mobileMenus[i].style.padding = '5px';
     }
