@@ -20,7 +20,6 @@ function setMenuEvent() {
     const mobileMenu = document.querySelector('.mobile-menu');
     const mobileMenuArr = Array.from(mobileMenu.childNodes)
     for (let i = 0; i < mobileMenuArr.length; i++) {
-        console.log(mobileMenuArr[i]);
         if (mobileMenuArr[i].id === 'more-menu') {
             mobileMenuArr[i].addEventListener('mouseover', displayMenu);
             mobileMenuArr[i].addEventListener('mouseout', hideMenu);
@@ -72,8 +71,5 @@ function styleMenu() {
         mobileMenus[i].style.padding = '5px';
     }
 }
-
-createMenu();
-styleMenu();
 
 export { setMenuEvent, createMenu, styleMenu };
